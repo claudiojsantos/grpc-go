@@ -8,6 +8,8 @@ message Category {
     string description = 3;
 }
 
+message blank {}
+
 message createCategoryRequest {
   string nome = 1;
   string descricao = 2;
@@ -17,6 +19,12 @@ message CategoryResponse {
     Category category = 1;
 }
 
+message CategoryList {
+    repeated Category categories = 1;
+}
+
 service CategoryService {
     rpc CreateCategory(createCategoryRequest) returns (CategoryResponse){}
+    rpc ListCategories(blank) returns (CategoryList){}
 }
+
